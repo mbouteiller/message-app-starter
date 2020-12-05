@@ -1,18 +1,16 @@
 <template>
   <div class="app">
-    <Messages></Messages>
+    <router-view></router-view>
     <Menu></Menu>
   </div>
 </template>
 
 <script>
-import Messages from "./components/Messages";
 import Menu from "./components/Menu";
 
 export default {
   name: "App",
   components: {
-    Messages,
     Menu
   }
 };

@@ -6,26 +6,31 @@
 </template>
 
 <script>
-    import { messagesMock } from '../mocks/messages.mock.js';
     import Message from "./Message";
     export default {
         name: "Messages",
-
-        data() {
-            return {
-                messages: messagesMock,
-            };
-        },
 
         components: {
             Message,
         },
 
+        created() {
+            this.$store.dispatch('setMessages');
+        },
+
         methods: {
             markAsRead(id) {
                 this.messages.find(message => message.id === id).read = true;
-            }
+            },
+        },
+
+        computed: {
+            messages() {
+                return this.$store.getters.sortMessagesByDate;
+            },
         }
+
+
     }
 </script>
 
